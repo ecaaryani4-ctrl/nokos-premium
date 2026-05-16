@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nokos Premium Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0b0f1a;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:#2563eb;
+filter:blur(150px);
+top:-200px;
+right:-100px;
+opacity:.4;
+z-index:-1;
+}
+
+body::after{
+content:'';
+position:fixed;
+width:400px;
+height:400px;
+background:#7c3aed;
+filter:blur(140px);
+bottom:-150px;
+left:-100px;
+opacity:.35;
+z-index:-1;
+}
+
+header{
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+z-index:100;
+background:rgba(10,10,20,.4);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+background:linear-gradient(90deg,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav{
+display:flex;
+gap:18px;
+align-items:center;
+}
+
+nav a{
+color:#ddd;
+text-decoration:none;
+font-size:14px;
+transition:.3s;
+}
+
+nav a:hover{
+color:white;
+}
+
+.btn{
+padding:12px 22px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(124,58,237,.4);
+}
+
+.hero{
+padding:90px 8%;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:50px;
+}
+
+.hero-text h1{
+font-size:58px;
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.hero-text span{
+background:linear-gradient(90deg,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero-text p{
+color:#bdbdbd;
+line-height:1.8;
+margin-bottom:30px;
+}
+
+.hero-image{
+display:flex;
+justify-content:center;
+}
+
+.phone{
+width:320px;
+height:620px;
+background:linear-gradient(180deg,#141b2d,#090d18);
+border-radius:40px;
+padding:18px;
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 20px 60px rgba(0,0,0,.5);
+position:relative;
+overflow:hidden;
+}
+
+.phone::before{
+content:'';
+position:absolute;
+width:200px;
+height:200px;
+background:#2563eb;
+filter:blur(90px);
+top:-50px;
+right:-50px;
+opacity:.7;
+}
+
+.phone-screen{
+width:100%;
+height:100%;
+border-radius:30px;
+background:#0f172a;
+padding:20px;
+position:relative;
+overflow:hidden;
+}
+
+.esim-card{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+padding:20px;
+border-radius:24px;
+margin-top:20px;
+box-shadow:0 10px 25px rgba(37,99,235,.4);
+}
+
+.esim-card h3{
+margin-bottom:8px;
+}
+
+.signal{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.signal div{
+flex:1;
+height:12px;
+background:#1e293b;
+border-radius:10px;
+overflow:hidden;
+}
+
+.signal div span{
+display:block;
+height:100%;
+background:linear-gradient(90deg,#60a5fa,#a78bfa);
+width:90%;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+padding:40px 8%;
+}
+
+.stat-box{
+background:rgba(255,255,255,.05);
+padding:25px;
+border-radius:22px;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.08);
+text-align:center;
+}
+
+.stat-box h2{
+font-size:32px;
+margin-bottom:8px;
+}
+
+.section-title{
+text-align:center;
+font-size:42px;
+margin-top:40px;
+margin-bottom:40px;
+}
+
+.products{
+padding:20px 8% 80px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+padding:22px;
+border-radius:24px;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.08);
+transition:.3s;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-6px);
+border-color:#7c3aed;
+}
+
+.badge{
+position:absolute;
+top:15px;
+right:15px;
+background:#22c55e;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+.flag{
+font-size:50px;
+margin-bottom:15px;
+}
+
+.card h3{
+margin-bottom:10px;
+font-size:24px;
+}
+
+.price{
+font-size:28px;
+font-weight:700;
+margin:15px 0;
+color:#60a5fa;
+}
+
+.features{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-bottom:20px;
+}
+
+.features span{
+color:#d1d5db;
+font-size:14px;
+}
+
+.buy-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.buy-btn:hover{
+transform:scale(1.03);
+}
+
+.features2{
+padding:90px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.feature-box{
+background:rgba(255,255,255,.05);
+padding:30px;
+border-radius:24px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.feature-box h3{
+margin:15px 0;
+}
+
+.feature-box p{
+color:#bdbdbd;
+line-height:1.7;
+}
+
+footer{
+padding:40px 8%;
+text-align:center;
+border-top:1px solid rgba(255,255,255,.08);
+color:#aaa;
+}
+
+.toast{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#111827;
+padding:16px 22px;
+border-radius:16px;
+border:1px solid rgba(255,255,255,.08);
+display:none;
+animation:fade .4s ease;
+z-index:999;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@media(max-width:950px){
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero-text h1{
+font-size:42px;
+}
+
+nav{
+display:none;
+}
+
+.phone{
+width:280px;
+height:560px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">noKo$ Premium</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Paket</a>
+<a href="#">Fitur</a>
+<a href="#">Support</a>
+<button class="btn">Login</button>
+</nav>
+</header>
+
+<section class="hero">
+
+<div class="hero-text">
+<h1>
+  OTP <span>Premium</span> Service
+</h1>
+
+<p>
+Melayani berbagai kebutuhan OTP mulai dari WhatsApp, Telegram, Shopee, TikTok, Google, dan masih banyak lagi.
+⚡ Proses cepat
+🛡️ Aman & terpercaya
+🕐 Support 24 jam nonstop
+💼 Cocok untuk kebutuhan bisnis maupun harian
+
+</p>
+
+<button class="btn" onclick="showToast()">Mulai Sekarang</button>
+</div>
+
+<div class="hero-image">
+
+<div class="phone">
+
+<div class="phone-screen">
+
+<h2>My eSIM</h2>
+
+<div class="esim-card">
+<h3>Global Premium</h3>
+<p>Unlimited Fast Network</p>
+
+<div class="signal">
+<div><span></span></div>
+<div><span style="width:75%"></span></div>
+<div><span style="width:95%"></span></div>
+</div>
+</div>
+
+<div style="margin-top:30px;">
+<p style="color:#aaa;">Data Used</p>
+<h1 style="margin-top:10px;">82%</h1>
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="stats">
+
+<div class="stat-box">
+<h2>150K+</h2>
+<p>User Aktif</p>
+</div>
+
+<div class="stat-box">
+<h2>190+</h2>
+<p>Negara Support</p>
+</div>
+
+<div class="stat-box">
+<h2>24/7</h2>
+<p>Customer Support</p>
+</div>
+
+</section>
+
+<h1 class="section-title">Paket eSIM Populer</h1>
+
+<section class="products">
+
+<div class="card">
+<div class="badge">HOT</div>
+<div class="flag">🇯🇵</div>
+<h3>Japan</h3>
+
+<div class="features">
+<span>✔ whatsapps</span>
+<span>✔ garansi 30 Hari</span>
+<span>✔ 5G Network</span>
+<span>✔ Aktivasi Instan</span>
+</div>
+
+<div class="price">Rp8.000</div>
+
+<button class="buy-btn" onclick="buyPackage('Japan eSIM')">
+Beli Sekarang
+</button>
+</div>
+
+<div class="card">
+<div class="badge">BEST</div>
+<div class="flag">🇸🇬</div>
+<h3>Singapore</h3>
+
+<div class="features">
+<span>✔ whatsapps</span>
+<span>✔ garansi 30 Hari</span>
+<span>✔ Ultra Fast</span>
+<span>✔ Support spam</span>
+</div>
+
+<div class="price">Rp9.500</div>
+
+<button class="buy-btn" onclick="buyPackage('Singapore eSIM')">
+Beli Sekarang
+</button>
+</div>
+
+<div class="card">
+<div class="badge">NEW</div>
+<div class="flag">🇺🇸</div>
+<h3>USA eSIM</h3>
+
+<div class="features">
+<span>✔ whatsapps</span>
+<span>✔ anti blokir</span>
+<span>✔ garansi 60 Hari</span>
+<span>✔ Premium Server</span>
+</div>
+
+<div class="price">Rp14.000</div>
+
+<button class="buy-btn" onclick="buyPackage('USA eSIM')">
+Beli Sekarang
+</button>
+</div>
+
+</section>
+
+<h1 class="section-title">Kenapa Pilih Kami?</h1>
+
+<section class="features2">
+
+<div class="feature-box">
+<h2>⚡</h2>
+<h3>Aktivasi Instan</h3>
+<p>
+Setelah pembayaran berhasil, whatsapps langsung aktif tanpa ribet.
+</p>
+</div>
+
+<div class="feature-box">
+<h2>🌍</h2>
+<h3>Global Coverage</h3>
+<p>
+Bisa digunakan di banyak negara dengan jaringan cepat dan stabil.
+</p>
+</div>
+
+<div class="feature-box">
+<h2>🔒</h2>
+<h3>Aman & Premium</h3>
+<p>
+Sistem aman, modern, dan cocok untuk kebutuhan pribadi maupun bisnis.
+</p>
+</div>
+
+</section>
+
+<footer>
+© 2026 eSIM Premium Store — All Rights Reserved
+</footer>
+
+<div class="toast" id="toast">
+Paket berhasil dipilih ✅
+</div>
+
+
+<script>
+
+function showToast(){
+const toast=document.getElementById("toast");
+
+toast.innerHTML="Selamat datang di eSIM Premium 🚀";
+toast.style.display="block";
+
+setTimeout(()=>{
+toast.style.display="none";
+},2500);
+}
+
+function buyPackage(name,price){
+
+const paymentHTML = `
+<div id="paymentModal" style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.75);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+padding:20px;
+">
+
+<div style="
+width:100%;
+max-width:420px;
+background:#111827;
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+padding:25px;
+animation:fade .3s ease;
+">
+
+<div style="display:flex;justify-content:space-between;align-items:center;">
+<h2>Pembayaran</h2>
+
+<button onclick="closeModal()" style="
+background:none;
+border:none;
+color:white;
+font-size:24px;
+cursor:pointer;
+">×</button>
+</div>
+
+<div style="
+margin-top:20px;
+background:rgba(255,255,255,.05);
+padding:18px;
+border-radius:18px;
+">
+
+<h3>${name}</h3>
+<p style="color:#9ca3af;margin-top:5px;">Premium eSIM Package</p>
+
+<h1 style="
+margin-top:15px;
+background:linear-gradient(90deg,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+">
+${price}
+</h1>
+
+</div>
+
+<h3 style="margin-top:25px;">Metode Pembayaran</h3>
+
+<div style="
+display:flex;
+flex-direction:column;
+gap:15px;
+margin-top:15px;
+">
+
+<button onclick="payDana()" style="
+padding:16px;
+border:none;
+border-radius:16px;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+color:white;
+font-weight:600;
+font-size:16px;
+cursor:pointer;
+">
+💳 Bayar dengan DANA
+</button>
+
+<button onclick="showQR()" style="
+padding:16px;
+border:none;
+border-radius:16px;
+background:linear-gradient(135deg,#7c3aed,#6d28d9);
+color:white;
+font-weight:600;
+font-size:16px;
+cursor:pointer;
+">
+📱 Bayar via QRIS
+</button>
+
+</div>
+
+<div id="qrArea" style="
+display:none;
+margin-top:25px;
+text-align:center;
+">
+
+<img src="https://i.ibb.co.com/QqxhqxP/Screenshot-20260516-062428-DANA.jpg"
+
+style="
+width:220px;
+border-radius:18px;
+background:white;
+padding:10px;
+">
+
+<p style="
+margin-top:15px;
+color:#9ca3af;
+font-size:14px;
+">
+Scan QRIS untuk pembayaran
+</p>
+
+</div>
+
+</div>
+</div>
+`;
+
+document.body.insertAdjacentHTML("beforeend",paymentHTML);
+
+}
+
+function closeModal(){
+
+const modal=document.getElementById("paymentModal");
+
+if(modal){
+modal.remove();
+}
+
+}
+
+function payDana(){
+
+alert("Redirect ke pembayaran DANA 🚀");
+
+}
+
+function showQR(){
+
+document.getElementById("qrArea").style.display="block";
+
+}
+
+</script>
+
+
+</body>
+</html>
